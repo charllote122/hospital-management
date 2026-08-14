@@ -10,7 +10,8 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-build-key-not-for-pro
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS - handles spaces and commas
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').replace(' ', '').split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -136,7 +137,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS Configuration
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:8000').split(',')
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:8000').replace(' ', '').split(',')
 
 # JWT Settings
 from datetime import timedelta
