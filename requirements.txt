@@ -1,8 +1,8 @@
-Django==4.1.13
+Django==4.2.11
 djangorestframework==3.14.0
 django-cors-headers==4.0.0
 python-decouple==3.8
-django-filter==24.3
+django-filter==23.1
 drf-spectacular==0.26.5
 django-extensions==3.2.3
 psycopg2-binary==2.9.9
