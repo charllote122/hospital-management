@@ -20,7 +20,7 @@ services:
       - key: DEBUG
         value: false
       - key: ALLOWED_HOSTS
-        value: hospital-management-system.onrender.com
+        value: hospital-management-system.onrender.com,localhost,127.0.0.1
       - key: DISABLE_COLLECTSTATIC
         value: 0
     plan: free
