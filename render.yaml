@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: hospital-management-system
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn hospital_api.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: hospital_api.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        value: hospital-management-system.onrender.com
+      - key: DB_ENGINE
+        value: django.db.backends.postgresql
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: JWT_EXPIRATION_HOURS
+        value: 24
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://hospital-management-system.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hospital-db
+          property: connectionString
+
+databases:
+  - name: hospital-db
+    databaseName: hospital_db
+    user: postgres
+    plan: free
