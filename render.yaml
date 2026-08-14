@@ -2,11 +2,13 @@ services:
   - type: web
     name: hospital-management-system
     env: python
-    buildCommand: ./build.sh
+    buildCommand: ./render-build.sh
     startCommand: gunicorn hospital_api.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: hospital_api.settings
+      - key: PYTHON_VERSION
+        value: 3.11.9
       - key: SECRET_KEY
         sync: false
       - key: JWT_SECRET_KEY
@@ -19,6 +21,6 @@ services:
         value: false
       - key: ALLOWED_HOSTS
         value: hospital-management-system.onrender.com
-      - key: DB_ENGINE
-        value: django.db.backends.postgresql
+      - key: DISABLE_COLLECTSTATIC
+        value: 0
     plan: free
