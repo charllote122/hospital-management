@@ -2,7 +2,7 @@ services:
   - type: web
     name: hospital-management-system
     env: python
-    buildCommand: ./render-build.sh
+    buildCommand: pip install -r requirements.txt
     startCommand: gunicorn hospital_api.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
@@ -20,7 +20,7 @@ services:
       - key: DEBUG
         value: false
       - key: ALLOWED_HOSTS
-        value: hospital-management-system.onrender.com,localhost,127.0.0.1
+        value: hospital-management-system.onrender.com
       - key: DISABLE_COLLECTSTATIC
         value: 0
     plan: free
